@@ -1,0 +1,279 @@
+.tips-throbber {
+  width: 58px;
+  height: 58px;
+  cursor: pointer;
+  z-index: 10;
+  background-image: url('/assets/tip_throbber.png');
+  -webkit-animation: throb .5s steps(12) alternate infinite;
+  -moz-animation: throb .5s steps(12) alternate infinite;
+  animation: throb .5s steps(12) alternate infinite;
+}
+
+@keyframes throb{
+  from{background-position:0 0}
+  to{background-position:-696px 0}
+}
+
+@-webkit-keyframes throb{
+  from{background-position:0 0}
+  to{background-position:100% 0}
+}
+
+@-moz-keyframes throb{
+  from{background-position:0 0}
+  to{background-position:-696px 0}
+}
+
+.tips-card {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  box-sizing: border-box;
+  color: rgb(85, 84, 89);
+  display: block;
+  font-size: 16px;
+  min-height: 246px;
+  line-height: 20px;
+  width: 436px;
+  border: 2px solid #7F7F7F;
+  background: #FFFFFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.tips-card, p, h2, a, li {
+  font-family: Lato, sans-serif !important;
+}
+
+.tips-card:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-color: transparent #FFFFFF;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
+.tips-card-right:after {
+  border-width: 15px 15px 15px 0;
+  left: -15px;
+  top: 118px;
+}
+
+.tips-card-left:after {
+  border-width: 15px 0 15px 15px;
+  right: -15px;
+  top: 118px;
+}
+
+.tips-card-top:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 15px 15px 0;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -15px;
+  left: 228px;
+}
+
+.tips-card-bottom:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 15px 15px;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -15px;
+  left: 228px;
+}
+
+.tips-card:before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-color: transparent #7F7F7F;
+  display: block;
+  width: 0;
+  z-index: 0;
+}
+
+.tips-card-right:before{
+  border-width: 16px 16px 16px 0;
+  left: -18px;
+  top: 117px;
+}
+
+.tips-card-left:before{
+  border-width: 16px 0 16px 16px;
+  right: -18px;
+  top: 117px;
+}
+
+.tips-card-top:before{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 16px 16px 0;
+  border-color: #7F7F7F transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  bottom: -18px;
+  left: 227px;
+}
+
+.tips-card-bottom:before{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 16px 16px;
+  border-color: #7F7F7F transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  top: -18px;
+  left: 227px;
+}
+
+.tips-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.3em;
+}
+
+.tips-card p {
+  margin: 0px;
+  line-height: 20px;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-width: 400;
+}
+
+.tips-opt-out {
+  position: absolute;
+  right: 30px;
+  bottom: 6px;
+  font-size: 11px;
+  color: #aaaaaa
+}
+
+.tips-opt-out-link {
+  text-decoration: none;
+  color: #4A90E2
+}
+
+.tips-opt-out-link:hover{
+  background-color: inherit;
+  color: #407ABE;
+}
+
+.tips-navigational-dots-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.tips-navigational-dot {
+  padding: 0 5px;
+  height: 8px;
+  width: 8px;
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.tips-navigational-dot circle {
+  fill: #ccc;
+}
+
+.tips-active-dot circle {
+  fill: #777777;
+}
+
+.tips-navigation-wrapper {
+  position: absolute;
+  right: 20px;
+  bottom: 40px;
+  left: 12px;
+  text-align: center;
+}
+
+.tips-btn-wrapper {
+  display: inline-block;
+  position: relative;
+  float: right;
+  bottom: 6px;
+  height: 20px;
+  width: 20px;
+}
+
+/* Ripped these buttons off */
+.tips-btn {
+  border: 0 none;
+  border-radius: 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  display: inline-block;
+  font-family: Lato,sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 16px;
+  margin-bottom: 0;
+  padding: 6px 17px;
+  text-transform: none;
+  transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  text-align: center; /* DELETE WHEN WIDTH AUTO */
+}
+
+.tips-btn.tips-dark {
+  background: none repeat scroll 0 0 #444444;
+}
+
+.tips-btn.tips-dark:hover {
+  background: none repeat scroll 0 0 #2DB6CF;
+}
+
+.tips-btn.tips-light {
+  background: none repeat scroll 0 0 #999999;
+}
+
+.tips-btn.tips-light:hover {
+  background: none repeat scroll 0 0 #444444;
+}
+
+.tips-btn.tips-green {
+  background: none repeat scroll 0 0 #46b98a;
+}
+
+.tips-btn.tips-green:hover {
+  background: none repeat scroll 0 0 #444444;
+}
+
+.tips-btn.tips-blue {
+  background: none repeat scroll 0 0 #2DB6CF;
+}
+
+.tips-btn.tips-blue:hover {
+  background: none repeat scroll 0 0 #444444;
+}
+
+.tips-btn.tips-red {
+  background: none repeat scroll 0 0 #E0645C;
+}
+
+.tips-btn.tips-red:hover {
+  background: none repeat scroll 0 0 #999999;
+}
