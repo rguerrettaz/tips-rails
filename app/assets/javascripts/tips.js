@@ -25,12 +25,38 @@
       })
     }
 
+    function createTips(){
+      var tipNodes = document.querySelectorAll('[data-tips-id]');
+
+      for(i = 0; i < tipNodes.length; ++i) {
+        var tip = new Tip(tipNodes[i])
+        Tips.list.push(tip)
+      }
+    };
+
+    // Sort list to make TipCard showing easier
+    function sortTipsList(list){
+      Tips.list.sort(function(a,b) {return a.priority - b.priority})
+    }
+
     //
     //
     // TIPS
     //
     //
     var Tips = {
+      init: function(customStorageDevice){
+
+        // Allow user to define their own storageDevice
+        if(customStorageDevice != undefined) {
+          this.storageDevice = customStorageDevice;
+        }
+
+        createTips();
+        sortTipsList();
+        this.showNextTip();
+      },
+
       list: [],
 
       storageDevice: {
@@ -545,24 +571,6 @@
     String.prototype.capitalize = function() {
       return this.charAt(0).toUpperCase() + this.slice(1);
     }
-
-    function createTips(){
-      var tipNodes = document.querySelectorAll('[data-tips-single-item]');
-
-      for(i = 0; i < tipNodes.length; ++i) {
-        var tip = new Tip(tipNodes[i])
-        Tips.list.push(tip)
-      }
-    };
-
-    // Sort list to make TipCard showing easier
-    function sortTipsList(list){
-      Tips.list.sort(function(a,b) {return a.priority - b.priority})
-    }
-
-    createTips();
-    sortTipsList();
-    Tips.showNextTip();
 
     return Tips;
   }
