@@ -27,52 +27,44 @@
 
     //
     //
-    // STORAGE DEVICE
-    //
-    //
-    var tipsCustomStorageDevice;
-    var storageDevice;
-    var defaultStorageDevice = {
-      optOutKey: 'tips-opted-out',
-
-      addTip: function(tipName){
-        localStorage.setItem(tipName, true);
-      },
-
-      tipHasBeenSeen: function(tipName){
-        return !!localStorage.getItem(tipName);
-      },
-
-      optOut: function(){
-        localStorage.setItem(this.optOutKey, true);
-      },
-
-      userHasOptedOut: function(){
-        return !!localStorage.getItem(this.optOutKey);
-      },
-
-      removeAll: function(tipNames){
-        tipNames.push(this.optOutKey)
-        tipNames.forEach(function(key){
-          localStorage.removeItem(key)
-        })
-      }
-    };
-
-    if (tipsCustomStorageDevice == undefined) storageDevice = defaultStorageDevice;
-    else storageDevice = tipsCustomStorageDevice();
-
-    //
-    //
     // TIPS
     //
     //
     var Tips = {
       list: [],
 
-      userOptedOut: function(){ return storageDevice.userHasOptedOut() },
+      storageDevice: {
+        optOutKey: 'tips-opted-out',
 
-      reset: function(){ storageDevice.removeAll(this.tipNames()) },
+        addTip: function(tipName){
+          localStorage.setItem(tipName, true);
+        },
+
+        tipHasBeenSeen: function(tipName){
+          console.log(" I GET CALLED BEFORE I GET OVERWRITTEN")
+          console.log(tipName)
+          return !!localStorage.getItem(tipName);
+        },
+
+        optOut: function(){
+          localStorage.setItem(this.optOutKey, true);
+        },
+
+        userHasOptedOut: function(){
+          return !!localStorage.getItem(this.optOutKey);
+        },
+
+        removeAll: function(tipNames){
+          tipNames.push(this.optOutKey)
+          tipNames.forEach(function(key){
+            localStorage.removeItem(key)
+          })
+        }
+      },
+
+      userOptedOut: function(){ return this.storageDevice.userHasOptedOut() },
+
+      reset: function(){ this.storageDevice.removeAll(this.tipNames()) },
 
       tipNames: function(){
         var names = [];
@@ -102,7 +94,7 @@
     //
     //
     function Tip(el) {
-      this.name = 'tips:' + el.getAttribute('data-tips-name');
+      this.name = 'tips:' + el.getAttribute('data-tips-id');
       this.priority = el.getAttribute('data-tips-priority') || 1;
       this.pages = el.getAttribute('data-tips-pages') || 1;
       this.tipNode = el;
@@ -116,7 +108,7 @@
 
     Tip.prototype.hasBeenSeen = function() {
       //Look in storage device for tip seen
-      return !!storageDevice.tipHasBeenSeen(this.name)
+      return !!Tips.storageDevice.tipHasBeenSeen(this.name)
     }
 
     //
@@ -217,7 +209,7 @@
       }
 
       function storeThatTipHasBeenSeen(){
-        storageDevice.addTip(hotSpot.tipName);
+        Tips.storageDevice.addTip(hotSpot.tipName);
       }
 
       function showTipCard(){
@@ -248,7 +240,8 @@
         // Highlight the tip node
         // For z-index to work the tipNode must have a positon in the following:
         // ['absolute', 'relative', 'fixed']
-        this.tipNode.style.zIndex = 9999;
+        // TODO: only hightlight the element if user sets it in config
+        // this.tipNode.style.zIndex = 9999;
       };
 
       tipCard.hide = function(){
@@ -459,7 +452,7 @@
       function addOptOutListener(optOutLink) {
         optOutLink.addEventListener('click', function(e){
           e.preventDefault();
-          storageDevice.optOut();
+          Tips.storageDevice.optOut();
           tipCard.hide();
         })
       };
