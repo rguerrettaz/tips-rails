@@ -1,6 +1,13 @@
 ;(function setup(window){
 
   function initTips(){
+
+    //
+    //
+    // Validation
+    // TODO: add validation to tip data-attributes config
+    //
+    //
     function Validation(config, settableAttrs, acceptableValues) {
 
       function logInvalidKeyError(key){
