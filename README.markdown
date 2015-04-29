@@ -22,7 +22,9 @@ Tips uses HTML data-attributes to pass the majority of its configuration.
 
 #### Creating a tip
 
-Creating a tip is easy. Just add the necessary data-attributes to your target element and call `Tips.init()`. For example, if you want to target a div on your page you'd add the following data-attributes to the div:
+Creating a tip is easy. Just add the necessary data-attributes to your target
+element and call `Tips.init()`. For example, if you want to target a div on your
+page you'd add the following data-attributes to the div:
 
 ```html
 <div  data-tips-id='my-unique-tip-name'
@@ -43,7 +45,8 @@ Tips.init()
 
 #### Creating multiple tips on a single page
 
-Use the same data-attributes as a single tip just make sure `data-tips-id` is unique for each tip and set the `data-tips-priority` appropriately.
+Use the same data-attributes as a single tip just make sure `data-tips-id` is
+unique for each tip and set the `data-tips-priority` appropriately.
 
 ```html
 <div  data-tips-id='my-unique-tip-name'
@@ -83,7 +86,8 @@ To do this just add the extra pages to `data-tips-content`
       data-tips-content='{"page1Header" : "This is my header",
                           "page1Body"   : "This is the body of my tip",
                           "page2Header" : "A second header?",
-                          "page2Body"   : "Yes! If you so choose, you can have tips with multiple pages."
+                          "page2Body"   : "Yes! If you so choose, you can have
+                                          tips with multiple pages."
                         }'
       data-tips-hot-spot-position='top-right'
       data-tips-card-position='right'
@@ -101,14 +105,18 @@ Tips.init()
 ## Attributes overview
 
 #### data-tips-id
-`data-tips-id` should be unique for each tip you have on your website. These are used as references when we check if a user has previously seen a tip.
+`data-tips-id` should be unique for each tip you have on your website.
+These are used as references when we check if a user has previously seen a tip.
 
 ```
 data-tips-id='some-unique-name-for-this-tip'
 ```
 
 #### data-tips-content
-`data-tips-content` is a JSON string representation of the content for your tip. To allow Tips to support multiple pages of content we use keys in the form of `page1Header` and `page1Body`. Pages should be sequential. Shit will fail otherwise.
+`data-tips-content` is a JSON string representation of the content for your tip.
+To allow Tips to support multiple pages of content we use keys in the form of
+`page1Header` and `page1Body`. Pages should be sequential. Shit will fail
+otherwise.
 
 ```
 data-tips-content='{"page1Header":"The header for the first page of this tip",
@@ -119,7 +127,8 @@ data-tips-content='{"page1Header":"The header for the first page of this tip",
 ```
 
 #### data-tips-hot-spot-position
-`data-tips-hot-spot-position` controls the position of the throbbing hot spot icon in relation to the element you're targeting.
+`data-tips-hot-spot-position` controls the position of the throbbing hot spot
+icon in relation to the element you're targeting.
 
 
 ```html
@@ -157,25 +166,30 @@ right
 ```
 
 #### data-tips-priority
-`data-tips-priority` is used when you have multiple tips on a given page. Priority 1 will be shown first.
+`data-tips-priority` is used when you have multiple tips on a given page.
+Priority 1 will be shown first.
 ```
 data-tips-priority='1'
 ```
 
 #### data-tips-pages
-`data-tips-pages` tells Tips how many pages you want on a given tip. Required attribute. There is no default set at this point.
+`data-tips-pages` tells Tips how many pages you want on a given tip. Required
+attribute. There is no default set at this point.
 ```
 data-tips-priority='1'
 ```
 
 ## Storage
 #### Default Storage (localStorage)
-By default Tips will use `localStorage` to store which tips have been seen. This works, however, it's sub-optimal. Using `localStorage` means tips may be seen twice. When using localStorage the following scenarios may show tips twice:
+By default Tips will use `localStorage` to store which tips have been seen.
+This works, however, it's sub-optimal. Using `localStorage` means tips may be
+seen twice. When using localStorage the following scenarios may show tips twice:
 * User opens pages in incognito mode
 * User opens pages in multiple browsers
 * User opens pages from multiple devices
 
-Because the lack of persistence with `localStorage`, Tips comes with the ability to [define your own](#custom-storage-device) `customStorageDevice`.
+Because the lack of persistence with `localStorage`, Tips comes with the ability
+to [define your own](#custom-storage-device) `customStorageDevice`.
 
 Here's the `defaultStorageDevice`:
 ```javascript
@@ -208,7 +222,8 @@ var defaultStorageDevice = {
 ```
 
 #### Custom Storage Device
-You can define your own custom storage device and pass it in as an argument when you initialize with `Tips.init(myCustomStorageDevice)`. Example using `jQuery`:
+You can define your own custom storage device and pass it in as an argument when
+you initialize with `Tips.init(myCustomStorageDevice)`. Example using `jQuery`:
 ```javascript
 (function initTipsWithCustomStorage() {
 
@@ -265,10 +280,12 @@ You can define your own custom storage device and pass it in as an argument when
 Important things to note here
 * You're passing an object with public methods, not a function
 * You must have the following methods defined
-** `addTip`
-** `tipHasBeenSeen`
-** `optOut`
-** `userHasOptedOut`
+```javascript
+storageDevice.addTip()
+storageDevice.tipHasBeenSeen()
+storageDevice.optOut()
+storageDevice.userHasOptedOut()
+```
 
 ## Contributing
 
