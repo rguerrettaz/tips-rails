@@ -37,7 +37,7 @@ Creating a tip is easy. Just add the necessary data-attributes to your target el
 ```
 
 Once the data attributes have been added add this line to your javascript
-```
+```javascript
 Tips.init()
 ```
 
@@ -71,7 +71,7 @@ Use the same data-attributes as a single tip just make sure `data-tips-id` is un
 ```
 
 Once the data attributes have been added add this line to your javascript
-```
+```javascript
 Tips.init()
 ```
 
@@ -79,15 +79,22 @@ Tips.init()
 
 To do this just add the extra pages to `data-tips-content`
 ```html
-data-tips-content='{  "page1Header" : "This is my header",
-                      "page1Body"   : "This is the body of my tip",
-                      "page2Header" : "A second header?",
-                      "page2Body"   : "Yes! If you so choose, you can have tips with multiple pages."
-                    }'
+<div  data-tips-id='my-unique-tip-name'
+      data-tips-content='{"page1Header" : "This is my header",
+                          "page1Body"   : "This is the body of my tip",
+                          "page2Header" : "A second header?",
+                          "page2Body"   : "Yes! If you so choose, you can have tips with multiple pages."
+                        }'
+      data-tips-hot-spot-position='top-right'
+      data-tips-card-position='right'
+      data-tips-priority='1'
+      data-tips-pages='1'>
+  <button>My 1st Button</button>
+</div>
 ```
 
 Once the data attributes have been added add this line to your javascript
-```
+```javascript
 Tips.init()
 ```
 
@@ -201,7 +208,7 @@ var defaultStorageDevice = {
 ```
 
 #### Custom Storage Device
-You can define your own custom storage device and pass it in as an argument when you initialize with `Tips.init()`. Example `tipsCustomStorageDevice` using `jQuery`:
+You can define your own custom storage device and pass it in as an argument when you initialize with `Tips.init(myCustomStorageDevice)`. Example using `jQuery`:
 ```javascript
 (function initTipsWithCustomStorage() {
 
@@ -254,6 +261,14 @@ You can define your own custom storage device and pass it in as an argument when
 })();
 
 ```
+
+Important things to note here
+* You're passing an object with public methods, not a function
+* You must have the following methods defined
+** `addTip`
+** `tipHasBeenSeen`
+** `optOut`
+** `userHasOptedOut`
 
 ## Contributing
 
