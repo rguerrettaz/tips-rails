@@ -1,6 +1,8 @@
-# Tips
+# Tips (beta)
 
 Slack inspired onboarding tips.
+
+Note: Tips is currently in Beta. Left, much work there is. To see a backlog of features and work currently in progress <a href='https://huboard.com/rguerrettaz/tips-rails/' target='_blank'>checkout the HuBoard.</a>
 
 <a href="http://codepen.io/rguerrettaz/pen/eNNXKB" target='_blank'><img src="http://i.imgur.com/EQuPxuh.gif"></a>
 
